@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AXIS V | 応募ページ（サーバ不要版）</title>
+  <meta name="description" content="Be the Axis. Shape the Vision. Vライバー募集。サーバ不要の応募フォーム。" />
+  <style>
+    :root{
+      --bg:#000;
+      --fg:#fff;
+      --muted:rgba(255,255,255,.7);
+      --muted2:rgba(255,255,255,.5);
+      --line:rgba(255,255,255,.12);
+      --accent:#34d399; /* emerald-400 */
+      --accent-glow: rgba(52, 211, 153, .18);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:saturate(120%) blur(6px);
+      background: rgba(0,0,0,.4);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
+    .logo{height:32px;width:32px;border-radius:12px;background:var(--accent-glow);border:1px solid rgba(52,211,153,.3);display:grid;place-items:center}
+    .chip{display:inline-block;padding:8px 14px;border-radius:12px;border:1px solid rgba(52,211,153,.4);background:rgba(52,211,153,.18)}
+    .links{display:none;gap:20px;align-items:center;color:var(--muted)}
+    @media(min-width:768px){.links{display:flex}}
+    .bg-grid:before, .bg-grid:after{
+      content:"";position:fixed;inset:0;z-index:-2;pointer-events:none
+    }
+    .bg-grid:before{background:radial-gradient(ellipse at top, var(--accent-glow), transparent 60%)}
+    .bg-grid:after{
+      background-image:linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:24px 24px;
+    }
+    section{border-top:1px solid var(--line)}
+    .hero{padding:80px 0}
+    .grid{display:grid;gap:24px}
+    @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}}
+    h1{font-size:44px;line-height:1.1;margin:0}
+    @media(min-width:640px){h1{font-size:64px}}
+    h2{font-size:32px;margin:0}
+    p.lead{color:var(--muted);max-width:56ch}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:700}
+    .btn-primary{background:var(--accent);color:#000;box-shadow:0 10px 30px -10px var(--accent)}
+    .btn-ghost{border:1px solid rgba(255,255,255,.15)}
+    .card{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.05);padding:16px}
+    .list{margin:12px 0 0 18px;color:var(--muted)}
+    .kicker{color:var(--muted2);font-size:12px}
+    .pill{height:36px;width:36px;border-radius:12px;background:var(--accent-glow);border:1px solid rgba(52,211,153,.3);display:grid;place-items:center}
+    .panel{border:1px solid var(--line);border-radius:18px;background:linear-gradient(to bottom, rgba(255,255,255,.05), transparent);padding:20px}
+    /* form */
+    form{display:grid;gap:14px}
+    .row{display:grid;gap:14px}
+    @media(min-width:700px){.row-2{grid-template-columns:1fr 1fr}}
+    label span{display:block;color:var(--muted2);font-size:12px;margin-bottom:6px}
+    input,textarea{width:100%;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.15);outline:none;color:var(--fg);padding:12px 14px}
+    textarea{min-height:120px;resize:vertical}
+    .agree{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:12px}
+    .muted{color:var(--muted2);font-size:12px}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted2);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .ok{color:var(--accent)}
+    .err{color:#f87171}
+  </style>
+</head>
+<body class="bg-grid">
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">★</div>
+        <div>AXIS <span style="color:var(--accent);">V</span></div>
+      </div>
+      <nav class="links">
+        <a href="#concept">コンセプト</a>
+        <a href="#features">強み</a>
+        <a href="#requirements">募集要項</a>
+        <a href="#apply" class="chip">応募</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="top">
+      <div class="container hero grid grid-2">
+        <div>
+          <h1>世界の軸となり、<br/>未来を描く。</h1>
+          <p class="lead" style="margin-top:16px;">AXIS V（アクシス・ブイ）は、Vライバーが自分らしく輝き、世界に羽ばたくための<strong>“軸”</strong>となるプロダクション。Virtual / Voice / Vision / Victory —— 4つのVであなたのステージを加速させます。</p>
+          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="#apply" class="btn btn-primary">今すぐ応募する</a>
+            <a href="#features" class="btn btn-ghost">特徴をみる</a>
+          </div>
+          <div class="kicker" style="margin-top:12px;">* IRIAM中心の活動を想定しています</div>
+        </div>
+        <div>
+          <div class="panel" style="aspect-ratio:4/3;display:grid;place-items:center;">
+            <div style="text-align:center;max-width:32ch;">
+              <div class="pill" style="margin:0 auto 12px;">▲</div>
+              <div style="color:var(--muted);">Be the <strong>Axis</strong>. Shape the <strong style="color:var(--accent)">Vision</strong>.</div>
+              <div class="kicker" style="margin-top:6px;">あなたの個性が、次の中心になる。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="concept">
+      <div class="container" style="padding:56px 0;">
+        <div class="grid grid-2">
+          <div>
+            <h2>AXIS Vとは</h2>
+            <p class="lead" style="margin-top:16px;line-height:1.8;">AXISは「軸」。私たちは配信者にとっての揺るぎない支えでありたいと考えています。Vは、<strong>Virtual（仮想世界）</strong>・<strong>Voice（声）</strong>・<strong>Vision（未来）</strong>・<strong>Victory（勝利）</strong>の象徴。個性と夢を最大限に活かし、成功へ導くための環境とサポートを提供します。</p>
+          </div>
+          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;">
+            <li class="card">配信ノウハウ・機材・SNSを徹底サポート</li>
+            <li class="card">世界観を尊重した自由なブランディング</li>
+            <li class="card">IRIAM中心に収益化・安全面もケア</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container" style="padding:56px 0;">
+        <h2>AXIS Vの強み</h2>
+        <div class="grid" style="margin-top:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+          <div class="panel"><strong>徹底サポート体制</strong><div class="kicker" style="margin-top:8px;">配信ノウハウ・機材・SNS運営まで全面支援。</div></div>
+          <div class="panel"><strong>活動の自由度</strong><div class="kicker" style="margin-top:8px;">あなたの世界観を尊重したブランディング。</div></div>
+          <div class="panel"><strong>成長と収益の両立</strong><div class="kicker" style="margin-top:8px;">IRIAMを中心に収益化を最適化。</div></div>
+          <div class="panel"><strong>プロ育成</strong><div class="kicker" style="margin-top:8px;">声・演技・企画力など長期的にスキルアップ。</div></div>
+          <div class="panel"><strong>安心の体制</strong><div class="kicker" style="margin-top:8px;">ガイドライン順守・トラブル対応の仕組み。</div></div>
+          <div class="panel"><strong>横のつながり</strong><div class="kicker" style="margin-top:8px;">切磋琢磨できるコミュニティ運営。</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="requirements">
+      <div class="container" style="padding:56px 0;">
+        <h2>募集要項</h2>
+        <div class="grid grid-2" style="margin-top:18px;">
+          <div class="card">
+            <strong>応募条件</strong>
+            <ul class="list">
+              <li>16歳以上（未成年は保護者同意必須）</li>
+              <li>IRIAMでの配信活動に興味がある方</li>
+              <li>安定したネット環境と配信可能な端末をお持ちの方</li>
+              <li>継続的に活動する意思のある方</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>歓迎条件</strong>
+            <ul class="list">
+              <li>声劇・歌・トークが得意な方</li>
+              <li>配信経験がある方（他PF可）</li>
+              <li>イラストやキャラ設定にこだわりがある方</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply">
+      <div class="container" style="padding:56px 0;max-width:860px;">
+        <h2>応募フォーム</h2>
+        <p class="kicker" style="margin-top:8px;">サーバ不要。送信すると端末にJSONファイルとして保存されます。<br/>メール送付もワンタップで用意しています。</p>
+
+        <form id="applyForm" style="margin-top:18px;">
+          <div class="row row-2">
+            <label><span>お名前 / ハンドルネーム <b class="ok">*</b></span><input name="name" required placeholder="例）朝日ルナ / Luna"/></label>
+            <label><span>年齢</span><input name="age" type="number" min="16" placeholder="16"/></label>
+          </div>
+
+          <div class="row row-2">
+            <label><span>メールアドレス <b class="ok">*</b></span><input name="email" type="email" required placeholder="you@example.com"/></label>
+            <label><span>Discord ID <b class="ok">*</b></span><input name="discord" required placeholder="name#1234 または @username"/></label>
+          </div>
+
+          <label><span>自己紹介（簡単でOK）</span><textarea name="intro" placeholder="配信経験・得意ジャンル・活動時間帯など"></textarea></label>
+          <label><span>活動イメージ / 得意ジャンル</span><input name="genre" placeholder="可愛い系 / クール系 / 歌 / 雑談 / 声劇 など"/></label>
+          <label><span>過去配信やSNSリンク（任意）</span><input name="links" placeholder="X, YouTube, IRIAM等のURL"/></label>
+
+          <div class="agree">
+            <input id="agree" type="checkbox" required />
+            <label for="agree">応募規約・プライバシーポリシーに同意します</label>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+            <button class="btn btn-primary" type="submit">送信（端末に保存）</button>
+            <button class="btn btn-ghost" type="button" id="sendMail">メールで送る</button>
+          </div>
+          <div id="msg" style="margin-top:10px;"></div>
+        </form>
+
+        <p class="muted" style="margin-top:16px;">※ Discord/SlackのWebhook送信はCORS制限で失敗する可能性が高いので、このサーバレス版では提供していません。必要なら前のNext.js版をご利用ください。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+      <div class="brand">
+        <div class="logo">★</div>
+        <div>AXIS <span style="color:var(--accent);">V</span></div>
+      </div>
+      <div class="kicker">© <span id="year"></span> AXIS V. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function collectForm(form){
+      const fd = new FormData(form);
+      const obj = {};
+      for(const [k,v] of fd.entries()){
+        obj[k] = v;
+      }
+      obj.submittedAt = new Date().toISOString();
+      return obj;
+    }
+
+    function downloadJSON(data, filename){
+      const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById('applyForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = collectForm(this);
+      const safeName = (data.name || 'applicant').replace(/[^\w\-ぁ-んァ-ヶｦ-ﾟ一-龠]/g,'_').slice(0,24);
+      const filename = `axisv-application-${safeName}.json`;
+      downloadJSON(data, filename);
+      const msg = document.getElementById('msg');
+      msg.innerHTML = '<span class="ok">✔ 端末に保存しました。メール送付や共有にご利用ください。</span>';
+      this.reset();
+    });
+
+    document.getElementById('sendMail').addEventListener('click', function(){
+      const form = document.getElementById('applyForm');
+      const data = collectForm(form);
+      const lines = [
+        '＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝',
+        '　　　AXIS V 応募内容',
+        '＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝',
+        '',
+        '【お名前 / ハンドルネーム】 ' + (data.name || ''),
+        '【年齢】 ' + (data.age || '-'),
+        '【メールアドレス】 ' + (data.email || ''),
+        '【Discord ID】 ' + (data.discord || ''),
+        '【自己紹介】',
+        (data.intro || '-'),
+        '',
+        '【活動イメージ / 得意ジャンル】',
+        (data.genre || '-'),
+        '',
+        '【過去配信やSNSリンク】',
+        (data.links || '-'),
+        '',
+        '送信時刻: ' + data.submittedAt,
+        '＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝'
+      ];
+
+      const body = encodeURIComponent(lines.join('\n'));
+      const subject = encodeURIComponent('AXIS V 応募');
+      // ここに送り先アドレスをセット（必要なら変更）
+      const to = 'zhuangtaizhuzhong7@gmail.com';
+      const url = `mailto:${to}?subject=${subject}&body=${body}`;
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
